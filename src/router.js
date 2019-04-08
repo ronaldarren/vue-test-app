@@ -28,7 +28,8 @@ const router = new Router({
         {
             path: '/menu',
             name: 'menu',
-            component: () => import('./views/Menu.vue')
+            component: () => import('./views/Menu.vue'),
+            meta: { authRequired: true }
         },
         {
             path: '/sign-in',
@@ -47,6 +48,14 @@ const router = new Router({
             meta: {
                 authRequired: true
             }
+        },
+        {
+            path: '/profile',
+            name: 'profile',
+            component: () => import('./views/Profile.vue'),
+            meta: {
+                authRequired: true
+            } 
         }
     ]
 });
