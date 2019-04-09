@@ -4,7 +4,7 @@
             <v-flex>
                 <h1>
                     <v-icon large left>account_circle</v-icon>
-                        Hello!
+                    Hello!
                 </h1>
             </v-flex>
         </v-layout>
