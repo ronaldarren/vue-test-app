@@ -1,5 +1,4 @@
 <template>
-<!-- <div :style="{ backgroundImage: 'url(' + image + ')' }"> -->
     <v-container fill-height>
         <v-layout align-center justify-center>
             <v-flex xs12 sm8 md4>
@@ -8,12 +7,6 @@
                         <v-toolbar dark color="purple darken-4">
                             <v-toolbar-title>{{ formTitle }}</v-toolbar-title>
                             <v-spacer></v-spacer>
-                            <v-avatar
-                                color="purple lighten-2"
-                                class="subheading white--text"
-                                size="24"
-                                v-text="step"
-                            ></v-avatar>
                         </v-toolbar>
 
                         <v-window v-model="step">
@@ -27,8 +20,11 @@
                                         :rules="emailRules"
                                         required
                                     ></v-text-field>
-                                    <span class="caption grey--text text--darken 1">
-                                        This is the email you will use to login to your Vue Test App account
+                                    <span
+                                        class="caption grey--text text--darken 1"
+                                    >
+                                        This is the email you will use to login
+                                        to your Vue Test App account
                                     </span>
                                 </v-card-text>
                             </v-window-item>
@@ -75,6 +71,7 @@
                         <v-divider></v-divider>
 
                         <v-card-actions>
+                            <v-btn @click="openSnackbar">Test Snackbar</v-btn>
                             <v-btn
                                 :disabled="step === 1"
                                 v-show="step !== 3"
@@ -84,8 +81,9 @@
                             >
                             <v-spacer></v-spacer>
                             <v-btn
-                                :disabled="email === ''"
+                                :disabled="email === '' || !/.+@.+/.test(email)"
                                 v-if="step === 1"
+                                flat
                                 @click="step++"
                                 >Next</v-btn
                             >
@@ -98,48 +96,22 @@
                                 v-show="step === 2"
                                 @click="
                                     submit();
+                                    openSnackbar();
                                     step++;
                                 "
                                 >Submit</v-btn
                             >
                         </v-card-actions>
-
-                        <!-- <v-card-text>
-            <v-form ref="form" v-model="valid" lazy-validation>
-              <v-text-field
-                prepend-icon="person"
-                name="email"
-                label="Email"
-                type="email"
-                v-model="email"
-                :rules="emailRules"
-                required
-              ></v-text-field>
-              <v-text-field
-                prepend-icon="lock"
-                name="password"
-                label="Password"
-                id="password"
-                type="password"
-                required
-                v-model="password"
-                :rules="passwordRules"
-              ></v-text-field>
-            </v-form>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="primary" :disabled="!valid" @click="submit">Join</v-btn>
-          </v-card-actions>-->
                     </v-form>
                 </v-card>
             </v-flex>
         </v-layout>
     </v-container>
-<!-- </div> -->
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
     name: 'Join',
     data() {
@@ -164,8 +136,7 @@ export default {
                 v =>
                     v == this.password ||
                     'Confirm password does not match password'
-            ],
-            image: 'http://source.unsplash.com/hTR1XPtTo_k'
+            ]
         };
     },
     methods: {
@@ -176,7 +147,17 @@ export default {
                     password: this.password
                 });
             }
+        },
+        ...mapMutations(['showSnackbar', 'closeSnackbar']),
+        openSnackbar() {
+            if (this.$refs.form.validate()) {
+                this.showSnackbar({ text: 'Welcome to Vue Test App!' });
+            }
         }
+        // snackbarButton(){
+        //     this.$emit('showSnackbar', 'Snackbar from Join screen!', 5000, 'bottom')
+        //     if(this.$refs.form.validate()) {
+        //     }
     },
     computed: {
         formTitle() {
@@ -193,5 +174,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

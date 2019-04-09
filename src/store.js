@@ -12,7 +12,13 @@ export default new Vuex.Store({
         apiUrl: 'https://api.edamam.com/search',
         user: null,
         isAuthenticated: false,
-        userRecipes: []
+        userRecipes: [],
+        snackbar: {
+            visible: false,
+            text: null,
+            timeout: 6000,
+            multiline: false
+        }
     },
     mutations: {
         setRecipes(state, payload) {
@@ -26,6 +32,25 @@ export default new Vuex.Store({
         },
         setUserRecipes(state, payload) {
             state.userRecipes = payload;
+        },
+        showSnackbar(state, payload) {
+            state.snackbar.text = payload.text;
+            state.snackbar.multiline = payload.text.length > 50 ? true : false;
+            if (payload.multiline) {
+                state.snackbar.multiline = payload.multiline;
+            }
+
+            if (payload.timeout) {
+                state.snackbar.timeout = payload.timeout;
+            }
+
+            state.snackbar.visible = true;
+        },
+        closeSnackbar(state) {
+            state.snackbar.visible = false;
+            state.snackbar.multiline = false;
+            state.snackbar.timeout = 6000;
+            state.snackbar.text = null;
         }
     },
     actions: {

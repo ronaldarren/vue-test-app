@@ -10,6 +10,7 @@
 import HomePlans from '@/components/HomePlans';
 import MealRecipes from '@/components/MealRecipes';
 import AppFooter from '@/components/AppFooter';
+
 export default {
     name: 'Menu',
     components: {
