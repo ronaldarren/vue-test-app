@@ -55,7 +55,7 @@ const router = new Router({
             component: () => import('./views/Profile.vue'),
             meta: {
                 authRequired: true
-            } 
+            }
         }
     ]
 });

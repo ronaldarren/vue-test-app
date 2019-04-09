@@ -10,18 +10,18 @@
             <v-list>
                 <div v-if="!isAuthenticated">
                     <template v-for="(item, index) in logOutItems">
-                    <v-list-tile :key="index">
-                        <v-list-tile-content>
-                            <router-link :to="{ path: item.route }">
-                                <v-btn flat>
-                                    <v-icon left>{{ item.icon }}</v-icon>
+                        <v-list-tile :key="index">
+                            <v-list-tile-content>
+                                <router-link :to="{ path: item.route }">
+                                    <v-btn flat>
+                                        <v-icon left>{{ item.icon }}</v-icon>
                                         {{ item.title }}
-                                </v-btn>
+                                    </v-btn>
                                 </router-link>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                    <v-divider :key="`divider-${index}`"></v-divider>
-                </template>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                        <v-divider :key="`divider-${index}`"></v-divider>
+                    </template>
                 </div>
                 <div v-else>
                     <template v-for="(item, index) in logInItems">
@@ -30,12 +30,12 @@
                                 <router-link :to="{ path: item.route }">
                                     <v-btn flat>
                                         <v-icon left>{{ item.icon }}</v-icon>
-                                            {{ item.title }}
+                                        {{ item.title }}
                                     </v-btn>
-                                    </router-link>
+                                </router-link>
                             </v-list-tile-content>
                         </v-list-tile>
-                    <v-divider :key="`divider-${index}`"></v-divider>
+                        <v-divider :key="`divider-${index}`"></v-divider>
                     </template>
                     <v-list-tile>
                         <v-list-tile-content>
@@ -88,9 +88,17 @@ export default {
             drawer: false,
             logInItems: [
                 { title: 'Menu', route: '/menu', icon: 'menu' },
-                { title: 'My Recipes', route: '/my-recipes', icon: 'library_books' },
+                {
+                    title: 'My Recipes',
+                    route: '/my-recipes',
+                    icon: 'library_books'
+                },
                 { title: 'Profile', route: '/profile', icon: 'account_circle' },
-                { title: 'Calendar', route: '/calendar', icon: 'calendar_today' },
+                {
+                    title: 'Calendar',
+                    route: '/calendar',
+                    icon: 'calendar_today'
+                }
                 // { title: 'Logout', route: null, icon: 'exit_to_app' }
             ],
             logOutItems: [

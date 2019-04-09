@@ -1,10 +1,14 @@
 <template>
-    <v-parallax height="700" src="http://source.unsplash.com/rzPVSqQjjqs">
+    <v-parallax height="700" src="http://source.unsplash.com/hTR1XPtTo_k">
+        <!-- rzPVSqQjjqs -->
         <!-- ddLiNMqWAOM -->
         <!-- <v-container fluid fill-height class="home-hero" style="max-height: 100vh;"> -->
         <v-layout justify-center align-center column>
-            <div class="display-4 font-weight-black white--text text-xs-center">
-                Hello! Are you hungry?
+            <div class="display-3 font-weight-black white--text text-xs-center">
+                Hello there!
+            </div>
+            <div class="display-2 font-weight-black white--text text-xs-center">
+                Hungry?
             </div>
             <div class="display-1 font-weight-bold white--text text-xs-center">
                 Scroll down to see your eating options
