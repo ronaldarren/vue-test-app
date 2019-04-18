@@ -33,12 +33,7 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn
-                            color="primary"
-                            :disabled="!valid"
-                            @click="submit"
-                            >Log in</v-btn
-                        >
+                        <v-btn :disabled="!valid" @click="submit">Log in</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-flex>

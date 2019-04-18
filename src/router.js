@@ -1,6 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
+import MyRecipes from './views/MyRecipes.vue';
+import Menu from './views/Menu.vue';
+import Signin from './views/Signin.vue';
+import Join from './views/Join.vue';
+import Calendar from './views/Calendar.vue';
+import Profile from './views/Profile.vue';
 import store from '@/store.js';
 
 Vue.use(Router);
@@ -20,7 +26,8 @@ const router = new Router({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import('./views/MyRecipes.vue'),
+            // component: () => import('./views/MyRecipes.vue'),
+            component: MyRecipes,
             meta: {
                 authRequired: true
             }
@@ -28,23 +35,27 @@ const router = new Router({
         {
             path: '/menu',
             name: 'menu',
-            component: () => import('./views/Menu.vue'),
+            component: Menu,
+            // component: () => import('./views/Menu.vue'),
             meta: { authRequired: true }
         },
         {
             path: '/sign-in',
             name: 'sign-in',
-            component: () => import('./views/Signin.vue')
+            component: Signin
+            // component: () => import('./views/Signin.vue')
         },
         {
             path: '/join',
             name: 'join',
-            component: () => import('./views/Join.vue')
+            component: Join
+            // component: () => import('./views/Join.vue')
         },
         {
             path: '/calendar',
             name: 'calendar',
-            component: () => import('./views/Calendar.vue'),
+            component: Calendar,
+            // component: () => import('./views/Calendar.vue'),
             meta: {
                 authRequired: true
             }
@@ -52,7 +63,8 @@ const router = new Router({
         {
             path: '/profile',
             name: 'profile',
-            component: () => import('./views/Profile.vue'),
+            component: Profile,
+            // component: () => import('./views/Profile.vue'),
             meta: {
                 authRequired: true
             }
